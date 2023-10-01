@@ -1,0 +1,20 @@
+{
+  "name": "hapi-web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvianaim02/hapi-web-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silvianaim02/hapi-web-server/issues"
+  },
+  "homepage": "https://github.com/silvianaim02/hapi-web-server#readme"
+}
