@@ -1,39 +1,53 @@
 const routes = [
-    {
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-            return 'Homepage';
-        },
+  {
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => {
+      return 'Homepage';
     },
-    {
-        method: '*',
-        path: '/',
-        handler: (request, h) => {
-            return 'Halaman tidak dapat diakses dengan method tersebut';
-        },
+  },
+  {
+    method: '*',
+    path: '/',
+    handler: (request, h) => {
+      return 'Halaman tidak dapat diakses dengan method tersebut';
     },
-    {
-        method: 'GET',
-        path: '/about',
-        handler: (request, h) => {
-            return 'About page';
-        },
+  },
+  {
+    method: 'GET',
+    path: '/about',
+    handler: (request, h) => {
+      return 'About page';
     },
-    {
-        method: '*',
-        path: '/about',
-        handler: (request, h) => {
-            return 'Halaman tidak dapat diakses dengan method';
-        },
+  },
+  {
+    method: '*',
+    path: '/about',
+    handler: (request, h) => {
+      return 'Halaman tidak dapat diakses dengan method';
     },
-    {
-        method: '*',
-        path: '/{any*}',
-        handler: (request, h) => {
-            return 'Halaman tidak ditemukan';
-        },
+  },
+  /* 
+  berikut ini merupakan path parameter
+  jika  dipanggil curl -X GET http://localhost:5000/hello/dicoding ---> maka akan Hello, dicoding!
+  jika fipanggil curl -X GET http://localhost:5000/hello/ ---> maka akan Hello, stranget! (karena defaultnya diberi value 'Stranger')
+  tanda 'tanya' (?) menandakan tidak wajib/opsional
+  */
+  {
+    method: 'GET',
+    path: '/hello/{name?}',
+    handler: (request, h) => {
+      const { name = 'stranger' } = request.params;
+      return `Hello, ${name}!`;
     },
+  },
+  {
+    method: '*',
+    path: '/{any*}',
+    handler: (request, h) => {
+      return 'Halaman tidak ditemukan';
+    },
+  },
 ];
- 
+
 module.exports = routes;
