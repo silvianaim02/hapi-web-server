@@ -27,17 +27,33 @@ const routes = [
       return 'Halaman tidak dapat diakses dengan method';
     },
   },
+
   /* 
-  berikut ini merupakan path parameter
-  jika  dipanggil curl -X GET http://localhost:5000/hello/dicoding ---> maka akan Hello, dicoding!
-  jika fipanggil curl -X GET http://localhost:5000/hello/ ---> maka akan Hello, stranget! (karena defaultnya diberi value 'Stranger')
-  tanda 'tanya' (?) menandakan tidak wajib/opsional
+    berikut ini merupakan path parameter
+    jika  dipanggil curl -X GET http://localhost:5000/hello/dicoding ---> maka akan Hello, dicoding!
+    jika fipanggil curl -X GET http://localhost:5000/hello/ ---> maka akan Hello, stranget! (karena defaultnya diberi value 'Stranger')
+    tanda 'tanya' (?) menandakan tidak wajib/opsional
   */
+
+  /* 
+    query parameter
+    curl -X GET http://localhost:5000/hello/dicoding?lang=id
+    // output: Hai, dicoding!
+    curl -X GET http://localhost:5000/hello/dicoding
+    // output: Hello, dicoding!
+  */
+
   {
     method: 'GET',
     path: '/hello/{name?}',
     handler: (request, h) => {
       const { name = 'stranger' } = request.params;
+      const { lang } = request.query;
+
+      if (lang === 'id') {
+        return `Hai, ${name}!`;
+      }
+
       return `Hello, ${name}!`;
     },
   },
